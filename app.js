@@ -64,7 +64,7 @@ async function fetchLastUpdate() {
         const data = await response.json();
         if (data[0]?.commit?.committer?.date) {
             const date = new Date(data[0].commit.author.date);
-            document.getElementById('last-update').textContent = `Last updated: ${date.toLocaleString()} UTC +2`;
+            document.getElementById('last-update').textContent = `Last updated: ${date.toLocaleString()}`;
         }
     } catch (error) {
         console.error('Error fetching last update:', error);
