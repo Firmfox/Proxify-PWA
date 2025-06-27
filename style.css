@@ -1,0 +1,282 @@
+:root {
+    --bg-color: #0d1117;
+    --container-color: #161b22;
+    --text-color: #c9d1d9;
+    --accent-color: #ff4f4f;
+    --item-bg: #21262d;
+    --border-color: #30363d;
+    --active-status: #238636;
+    font-size: 95%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: var(--container-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-family: Arial;
+    font-weight: 100;
+}
+
+.status {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 15px;
+    background: var(--active-status);
+    border-radius: 20px;
+    font-weight: 100;
+    font-size: 0.9rem;
+}
+
+.update-time {
+    margin: 18px 0;
+    font-size: 0.85rem;
+    color: #8b949e;
+}
+
+.tab-container {
+    margin-top: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.tab-buttons::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 5px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.tab-content {
+    display: none;
+    padding: 15px 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Telegram Tabs */
+.telegram-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--item-bg);
+    border: 1px solid var(--border-color);
+}
+
+.telegram-tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.telegram-tab-btn.active {
+    background: rgba(79, 155, 255, 0.2);
+    color: var(--accent-color);
+}
+
+.telegram-content {
+    display: none;
+}
+
+.telegram-content.active {
+    display: block;
+}
+
+/* V2Ray Tabs */
+.v2ray-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--item-bg);
+    border: 1px solid var(--border-color);
+}
+
+.v2ray-tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.v2ray-tab-btn.active {
+    background: rgba(255, 79, 79, 0.2);
+    color: var(--accent-color);
+}
+
+.v2ray-content {
+    display: none;
+}
+
+.v2ray-content.active {
+    display: block;
+}
+
+.servers ul {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.servers li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--item-bg);
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+.servers li.loading {
+    justify-content: center;
+    color: #8b949e;
+    font-style: italic;
+}
+
+.server-name {
+    flex: 1;
+    text-align: left;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.action-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.copy-btn {
+    background: rgba(79, 255, 156, 0.1);
+}
+
+.connect-btn {
+    background: rgba(79, 155, 255, 0.1);
+}
+
+.download-btn {
+    background: rgba(255, 156, 79, 0.1);
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #8b949e;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .tab-btn {
+        min-width: 110px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .tab-btn {
+        min-width: 100px;
+        padding: 10px 5px;
+    }
+    
+    .servers li {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+}

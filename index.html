@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" href="icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    <title>Proxify: Stay Hidden, Stay Safe</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h3 id="welcome-message">The Key to an Open Internet.</h3>
+            <span id="user-status" class="status">Status: Loading...</span>
+            <div id="last-update" class="update-time">Last updated: --</div>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="telegram">Telegram Proxy</button>
+                <button class="tab-btn" data-tab="proxy">Regular Proxy</button>
+                <button class="tab-btn" data-tab="v2ray">V2Ray Subscriptions</button>
+            </div>
+            
+            <div class="tab-content active" id="telegram">
+                <div class="telegram-tabs">
+                    <button class="telegram-tab-btn active" data-telegram-tab="mtproto">MTProto</button>
+                    <button class="telegram-tab-btn" data-telegram-tab="socks">SOCKS</button>
+                </div>
+                <div class="telegram-content active" id="mtproto">
+                    <div class="servers">
+                        <ul id="mtproto-list"></ul>
+                    </div>
+                </div>
+                <div class="telegram-content" id="socks">
+                    <div class="servers">
+                        <ul id="socks-list"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="proxy">
+                <div class="servers">
+                    <ul id="proxy-list">
+                        <li class="loading">Loading proxy lists...</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="v2ray">
+                <div class="v2ray-tabs">
+                    <button class="v2ray-tab-btn active" data-v2ray-tab="mixed">Mixed</button>
+                    <button class="v2ray-tab-btn" data-v2ray-tab="protocol">By Protocol</button>
+                </div>
+                <div class="v2ray-content active" id="mixed">
+                    <div class="servers">
+                        <ul id="v2ray-mixed-list">
+                            <li class="loading">Loading mixed subscriptions...</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="v2ray-content" id="protocol">
+                    <div class="servers">
+                        <ul id="v2ray-protocol-list">
+                            <li class="loading">Loading protocol-specific subscriptions...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            Made with Love By <a style="color: #8b949e; text-decoration: none;" target="_blank" href="https://github.com/74647">74647</a>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
