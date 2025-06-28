@@ -1,0 +1,25 @@
+name: Build APK with Custom Icon
+on: push
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Build APK
+      uses: cezaraugusto/web-to-apk-action@v1
+      with:
+        url: https://74647.github.io/Proxify-PWA/
+        name: Proxify
+        package: com.proxify.app
+        icon: ./icon-512x512.png  # Path to your icon file
+        splash-screen-color: '#111827'  # Match your theme
+        enable-notifications: true
+        orientation: portrait
