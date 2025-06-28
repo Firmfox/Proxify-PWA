@@ -1,4 +1,4 @@
-name: Build APK with Icon
+name: Build APK with Custom Icon
 on: push
 
 jobs:
@@ -8,26 +8,29 @@ jobs:
     - uses: actions/checkout@v4
     
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         
     - name: Install Bubblewrap
       run: npm install -g @bubblewrap/cli
         
-    - name: Initialize with custom icon
+    - name: Initialize with icon
       run: |
-        bubblewrap init --manifest=https://74647.github.io/Proxify-PWA/manifest.json \
-        --directory=./android-build \
-        --icon=./icon-512x512.png \
-        --backgroundColor=#0d1117
+        bubblewrap init \
+          --manifest=https://74647.github.io/Proxify-PWA/manifest.json \
+          --directory=./android-build \
+          --icon=./icon512x512.png \
+          --backgroundColor=#0d1117 \
+          --appVersionName="1.0.$GITHUB_RUN_NUMBER"
         
     - name: Build APK
       working-directory: ./android-build
       run: bubblewrap build --skipVersionCheck
       
-    - name: Upload APK
-      uses: actions/upload-artifact@v3
+    - name: Upload APK (Updated to v4)
+      uses: actions/upload-artifact@v4
       with:
         name: Proxify
         path: ./android-build/app-release-signed.apk
+        retention-days: 7
