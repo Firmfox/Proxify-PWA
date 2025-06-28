@@ -1,25 +1,33 @@
-name: Build APK with Custom Icon
+name: Build APK with Icon
 on: push
 
 jobs:
-  build-apk:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     
-    - name: Set up JDK
-      uses: actions/setup-java@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
       with:
-        java-version: '17'
-        distribution: 'temurin'
+        node-version: '18'
+        
+    - name: Install Bubblewrap
+      run: npm install -g @bubblewrap/cli
+        
+    - name: Initialize with custom icon
+      run: |
+        bubblewrap init --manifest=https://74647.github.io/Proxify-PWA/manifest.json \
+        --directory=./android-build \
+        --icon=./icon-512x512.png \
+        --backgroundColor=#0d1117
         
     - name: Build APK
-      uses: cezaraugusto/web-to-apk-action@v1
+      working-directory: ./android-build
+      run: bubblewrap build --skipVersionCheck
+      
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
       with:
-        url: https://74647.github.io/Proxify-PWA/
         name: Proxify
-        package: com.proxify.app
-        icon: ./icon-512x512.png  # Path to your icon file
-        splash-screen-color: '#111827'  # Match your theme
-        enable-notifications: true
-        orientation: portrait
+        path: ./android-build/app-release-signed.apk
