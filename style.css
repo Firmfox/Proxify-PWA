@@ -90,7 +90,7 @@ h3 {
     color: var(--text-color);
     cursor: pointer;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     border-bottom: 2px solid transparent;
     white-space: nowrap;
     transition: all 0.3s ease;
