@@ -1,4 +1,3 @@
-// Service Worker Registration
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
@@ -7,9 +6,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Tab Management
 function setupTabs() {
-    // Main tabs (Telegram/Regular/V2Ray)
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const tabId = btn.dataset.tab;
@@ -24,7 +21,6 @@ function setupTabs() {
         });
     });
 
-    // Telegram sub-tabs (MTProto/SOCKS)
     document.querySelectorAll('.telegram-tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const tabId = btn.dataset.telegramTab;
@@ -39,7 +35,6 @@ function setupTabs() {
         });
     });
 
-    // V2Ray sub-tabs (Mixed/Protocol)
     document.querySelectorAll('.v2ray-tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const tabId = btn.dataset.v2rayTab;
@@ -55,7 +50,6 @@ function setupTabs() {
     });
 }
 
-// Last Update Time
 async function fetchLastUpdate() {
     try {
         const response = await fetch('https://api.github.com/repos/74647/Proxify/commits?per_page=1');
@@ -85,7 +79,6 @@ async function loadTelegramProxies() {
         const mtprotoText = await mtprotoResponse.text();
         const socksText = await socksResponse.text();
 
-        // Process MTProto proxies (convert https://t.me to tg://)
         const mtprotoProxies = mtprotoText.split('\n')
             .filter(line => {
                 const trimmed = line.trim();
@@ -95,7 +88,6 @@ async function loadTelegramProxies() {
             })
             .map(proxy => proxy.trim().replace('https://t.me/proxy', 'tg://proxy'));
 
-        // Process SOCKS proxies (they're actually in Telegram proxy format)
         const socksProxies = socksText.split('\n')
             .filter(line => {
                 const trimmed = line.trim();
@@ -142,7 +134,6 @@ function displayTelegramProxies(mtprotoProxies, socksProxies) {
         }
     };
 
-    // Display MTProto proxies
     const mtprotoList = document.getElementById('mtproto-list');
     mtprotoList.innerHTML = mtprotoProxies.length > 0 
         ? '' 
@@ -152,7 +143,6 @@ function displayTelegramProxies(mtprotoProxies, socksProxies) {
         if (item) mtprotoList.appendChild(item);
     });
 
-    // Display SOCKS proxies (showing them as Telegram proxies)
     const socksList = document.getElementById('socks-list');
     socksList.innerHTML = socksProxies.length > 0 
         ? '' 
@@ -225,7 +215,6 @@ async function loadRegularProxies() {
 // V2Ray Subscriptions
 async function loadV2RaySubscriptions() {
     try {
-        // Load mixed subscriptions
         const mixedList = document.getElementById('v2ray-mixed-list');
         mixedList.innerHTML = '';
 
@@ -264,7 +253,6 @@ async function loadV2RaySubscriptions() {
             mixedList.innerHTML = '<li class="no-proxies">No mixed subscriptions available</li>';
         }
 
-        // Load protocol-specific subscriptions
         const protocolList = document.getElementById('v2ray-protocol-list');
         protocolList.innerHTML = '';
 
@@ -317,9 +305,7 @@ async function loadV2RaySubscriptions() {
     }
 }
 
-// Button Actions
 function setupProxyButtons() {
-    // Copy buttons - now copies the file URL
     document.querySelectorAll('.copy-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
             const fileUrl = btn.dataset.url;
@@ -346,7 +332,6 @@ function setupProxyButtons() {
         });
     });
 
-    // Connect buttons (for Telegram proxies)
     document.querySelectorAll('.connect-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const url = btn.dataset.link;
@@ -366,7 +351,6 @@ function setupProxyButtons() {
         });
     });
 
-    // Download buttons
     document.querySelectorAll('.download-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const content = btn.dataset.link;
@@ -386,23 +370,18 @@ function setupProxyButtons() {
     });
 }
 
-// Initialize App
 async function initializeApp() {
     setupTabs();
     fetchLastUpdate();
     
-    // Set initial active tab
     document.querySelector('.tab-btn[data-tab="telegram"]').click();
     document.querySelector('.telegram-tab-btn[data-telegram-tab="mtproto"]').click();
     document.querySelector('.v2ray-tab-btn[data-v2ray-tab="mixed"]').click();
     
-    // Load all data
     try {
-        // Load Telegram proxies
         const { mtprotoProxies, socksProxies } = await loadTelegramProxies();
         displayTelegramProxies(mtprotoProxies, socksProxies);
         
-        // Load other data in parallel
         await Promise.all([
             loadRegularProxies(),
             loadV2RaySubscriptions()
@@ -418,5 +397,4 @@ async function initializeApp() {
 }
 
 
-// Start the app
 document.addEventListener('DOMContentLoaded', initializeApp);
