@@ -1,9 +1,9 @@
-[![image44-psd.png](https://i.postimg.cc/0y9fwwLs/image44-psd.png)](https://74647.github.io/Proxify-PWA/)
+[![image44-psd.png](https://i.postimg.cc/0y9fwwLs/image44-psd.png)](https://Firmfox.github.io/Proxify-PWA/)
 
 #
 <div align="center">
 
-![GitHub last commit](https://img.shields.io/github/last-commit/74647/proxify)
+![GitHub last commit](https://img.shields.io/github/last-commit/Firmfox/proxify)
 ![Python Version](https://img.shields.io/badge/python-3.7%2B-blue)
 ![Active Proxies](https://img.shields.io/badge/proxies-1000%2B-brightgreen)
 ![PWA Badge](https://img.shields.io/badge/PWA-optimized-blueviolet?logo=pwa&style=flat)
@@ -20,7 +20,7 @@
 ### Access Methods 
 
 - #### [Primary PWA endpoint](https://proxify.net/) Unavailable ⚠️
-- #### [GitHub Pages mirror](https://74647.github.io/Proxify-PWA/)
+- #### [GitHub Pages mirror](https://Firmfox.github.io/Proxify-PWA/)
 
 ### Installation Guide 💕
 
@@ -46,4 +46,4 @@ This tool is for educational purposes only. The maintainers are not responsible 
 
 ## License 📜
 
-![License](https://img.shields.io/github/license/74647/Proxify)
+![License](https://img.shields.io/github/license/Firmfox/Proxify)
