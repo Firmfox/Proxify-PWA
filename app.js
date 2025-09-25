@@ -52,7 +52,7 @@ function setupTabs() {
 
 async function fetchLastUpdate() {
     try {
-        const response = await fetch('https://api.github.com/repos/74647/Proxify/commits?per_page=1');
+        const response = await fetch('https://api.github.com/repos/Firmfox/Proxify/commits?per_page=1');
         if (!response.ok) throw new Error('Failed to fetch update data');
         
         const data = await response.json();
@@ -69,8 +69,8 @@ async function fetchLastUpdate() {
 async function loadTelegramProxies() {
     try {
         const [mtprotoResponse, socksResponse] = await Promise.all([
-            fetch('https://raw.githubusercontent.com/74647/Proxify/main/telegram_proxies/mtproto.txt'),
-            fetch('https://raw.githubusercontent.com/74647/Proxify/main/telegram_proxies/socks5.txt')
+            fetch('https://raw.githubusercontent.com/Firmfox/Proxify/main/telegram_proxies/mtproto.txt'),
+            fetch('https://raw.githubusercontent.com/Firmfox/Proxify/main/telegram_proxies/socks5.txt')
         ]);
 
         if (!mtprotoResponse.ok) throw new Error(`MTProto fetch failed: ${mtprotoResponse.status}`);
@@ -119,7 +119,7 @@ function displayTelegramProxies(mtprotoProxies, socksProxies) {
                     <span class="proxy-index">#${index + 1}</span>
                 </div>
                 <div class="proxy-actions">
-                    <button class="action-btn copy-btn" data-url="https://raw.githubusercontent.com/74647/Proxify/main/telegram_proxies/${type.toLowerCase()}.txt">
+                    <button class="action-btn copy-btn" data-url="https://raw.githubusercontent.com/Firmfox/Proxify/main/telegram_proxies/${type.toLowerCase()}.txt">
                         <img src="copy-icon.png" alt="Copy" class="action-icon">
                     </button>
                     <button class="action-btn connect-btn" data-link="${proxy}">
@@ -158,10 +158,10 @@ function displayTelegramProxies(mtprotoProxies, socksProxies) {
 // Regular Proxies
 async function loadRegularProxies() {
     const proxyTypes = [
-        { name: 'HTTP', url: 'https://raw.githubusercontent.com/74647/Proxify/main/proxies/http.txt' },
-        { name: 'HTTPS', url: 'https://raw.githubusercontent.com/74647/Proxify/main/proxies/https.txt' },
-        { name: 'SOCKS4', url: 'https://raw.githubusercontent.com/74647/Proxify/main/proxies/socks4.txt' },
-        { name: 'SOCKS5', url: 'https://raw.githubusercontent.com/74647/Proxify/main/proxies/socks5.txt' }
+        { name: 'HTTP', url: 'https://raw.githubusercontent.com/Firmfox/Proxify/main/proxies/http.txt' },
+        { name: 'HTTPS', url: 'https://raw.githubusercontent.com/Firmfox/Proxify/main/proxies/https.txt' },
+        { name: 'SOCKS4', url: 'https://raw.githubusercontent.com/Firmfox/Proxify/main/proxies/socks4.txt' },
+        { name: 'SOCKS5', url: 'https://raw.githubusercontent.com/Firmfox/Proxify/main/proxies/socks5.txt' }
     ];
 
     try {
@@ -220,7 +220,7 @@ async function loadV2RaySubscriptions() {
 
         for (let i = 1; i <= 35; i++) {
             try {
-                const url = `https://raw.githubusercontent.com/74647/proxify/main/v2ray_configs/mixed/subscription-${i}.txt`;
+                const url = `https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/mixed/subscription-${i}.txt`;
                 const response = await fetch(url);
                 if (!response.ok) continue;
 
@@ -257,11 +257,11 @@ async function loadV2RaySubscriptions() {
         protocolList.innerHTML = '';
 
         const protocols = [
-            { name: 'VMess', url: 'https://raw.githubusercontent.com/74647/proxify/main/v2ray_configs/seperated_by_protocol/vmess.txt' },
-            { name: 'VLESS', url: 'https://raw.githubusercontent.com/74647/proxify/main/v2ray_configs/seperated_by_protocol/vless.txt' },
-            { name: 'Trojan', url: 'https://raw.githubusercontent.com/74647/proxify/main/v2ray_configs/seperated_by_protocol/trojan.txt' },
-            { name: 'Shadowsocks', url: 'https://raw.githubusercontent.com/74647/proxify/main/v2ray_configs/seperated_by_protocol/shadowsocks.txt' },
-            { name: 'Other', url: 'https://raw.githubusercontent.com/74647/proxify/main/v2ray_configs/seperated_by_protocol/other.txt' }
+            { name: 'VMess', url: 'https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/vmess.txt' },
+            { name: 'VLESS', url: 'https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/vless.txt' },
+            { name: 'Trojan', url: 'https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/trojan.txt' },
+            { name: 'Shadowsocks', url: 'https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/shadowsocks.txt' },
+            { name: 'Other', url: 'https://raw.githubusercontent.com/Firmfox/proxify/main/v2ray_configs/seperated_by_protocol/other.txt' }
         ];
 
         for (const protocol of protocols) {
